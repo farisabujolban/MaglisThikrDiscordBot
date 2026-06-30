@@ -1,0 +1,38 @@
+{
+    "name": "maglisthikrdiscordbot",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "lint": "eslint . --max-warnings=0",
+        "lint:fix": "eslint . --fix --max-warnings=0",
+        "fmt": "prettier --write .",
+        "fmt:check": "prettier --check .",
+        "tc": "git ls-files -- '*.ts' '*.tsx' | grep -q . && tsc --noEmit || echo 'No TypeScript files found, skipping typecheck'",
+        "prepare": "husky"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/farisabujolban/MaglisThikrDiscordBot.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/farisabujolban/MaglisThikrDiscordBot/issues"
+    },
+    "homepage": "https://github.com/farisabujolban/MaglisThikrDiscordBot#readme",
+    "devDependencies": {
+        "@commitlint/cli": "^21.1.0",
+        "@commitlint/config-conventional": "^21.1.0",
+        "@farisabujolban/codeanchor": "^0.2.1",
+        "@farisabujolban/eslint-plugin-codeanchor": "^0.2.1",
+        "eslint": "^10.6.0",
+        "husky": "^9.1.7",
+        "lint-staged": "^16.4.0",
+        "prettier": "^3.9.4",
+        "typescript": "^6.0.3",
+        "typescript-eslint": "^8.62.1"
+    }
+}
