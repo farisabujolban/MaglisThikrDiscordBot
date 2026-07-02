@@ -33,8 +33,16 @@ async def on_voice_state_update(member: discord.Member, before: discord.VoiceSta
     # fires this event but isn't a "leave".
     if before.channel is not None and after.channel is None:
         try:
+            # Discord has no markup for arbitrary hex text colors; an ansi
+            # code block is the only way to render colored inline text, and
+            # its palette is a fixed set of 8 terminal colors. Bold green
+            # ([1;32m) is the closest available match to #4DFFBC.
+            dua = 'سُبْحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ، أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا أَنْتَ، أَسْتَغْفِرُكَ وَأَتُوبُ إِلَيْكَ'
+            colored_dua = f'```ansi\n[1;32m{dua}[0m\n```'
             await member.send(
-                'عن أبي هريرة رضي الله عنه، قال رسول الله ﷺ: «مَنْ جَلَسَ فِي مَجْلِسٍ فَكَثُرَ فِيهِ لَغَطُهُ، فَقَالَ قَبْلَ أَنْ يَقُومَ مِنْ مَجْلِسِهِ ذَلِكَ: سُبْحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ، أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا أَنْتَ، أَسْتَغْفِرُكَ وَأَتُوبُ إِلَيْكَ.. إِلَّا غُفِرَ لَهُ مَا كَانَ فِي مَجْلِسِهِ ذَلِكَ»'
+                f'عن أبي هريرة رضي الله عنه، قال رسول الله ﷺ: «مَنْ جَلَسَ فِي مَجْلِسٍ فَكَثُرَ فِيهِ لَغَطُهُ، '
+                f'فَقَالَ قَبْلَ أَنْ يَقُومَ مِنْ مَجْلِسِهِ ذَلِكَ: {colored_dua}.. '
+                'إِلَّا غُفِرَ لَهُ مَا كَانَ فِي مَجْلِسِهِ ذَلِكَ»'
             )
         except discord.Forbidden:
             # The member has DMs from server members disabled, or has
